@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" id="main-page">
+        <h1 class="header_text">Will you be my Valentine? ❤️</h1>
+        <div class="buttons">
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">
+            <button class="yes-button" onclick="showYesPage()">Yes</button>
+            <button class="no-button" onclick="handleNoClick()">No</button>
+        </div>
+    </div>
+
+    <div class="yes-container" id="yes-page">
+        <h1>Knew you would say yes! ❤️</h1>
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif">
+    </div>
+
+    <script>
+        const messages = [
+            "Are you sure?", "Really sure??", "Are you positive?", 
+            "Pookie please...", "Just think about it!", 
+            "If you say no, I will be really sad...", 
+            "I will be very sad...", "I will be very very very sad...",
+            "Ok fine, I will stop asking...", "Just kidding, say yes please! ❤️"
+        ];
+
+        let messageIndex = 0;
+
+        function handleNoClick() {
+            const noButton = document.querySelector('.no-button');
+            const yesButton = document.querySelector('.yes-button');
+            noButton.textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
+            const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = `${currentSize * 1.5}px`;
+        }
+
+        function showYesPage() {
+            document.getElementById("main-page").style.display = "none";
+            document.getElementById("yes-page").style.display = "flex";
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f9e3e3;
+    font-family: 'Arial', sans-serif;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden; /* Prevent scrolling */
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #d32f2f;
+}
+
+.main-gif {
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.buttons {
+    margin-top: 20px;
+    position: relative;
+}
+
+.yes-button, .no-button {
+    font-size: 1.5em;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: font-size 0.3s ease-in-out;
+}
+
+.yes-button {
+    background-color: #4caf50;
+    color: white;
+}
+
+.no-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.yes-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.yes-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
